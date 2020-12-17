@@ -1,0 +1,3 @@
+include ':amsplugin'
+include ':app'
+rootProject.name = "TransFormTest"

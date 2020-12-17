@@ -1,0 +1,45 @@
+plugins {
+    id 'groovy'
+    id 'maven'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+
+
+dependencies {
+    //gradle sdk
+    implementation gradleApi()
+    //groovy sdk
+    implementation localGroovy()
+
+    implementation 'com.android.tools.build:gradle:3.4.0'
+
+    implementation 'org.ow2.asm:asm:7.2'
+    implementation 'org.ow2.asm:asm-commons:7.2'
+    implementation 'org.ow2.asm:asm-analysis:7.2'
+    implementation 'org.ow2.asm:asm-util:7.1'
+    implementation 'org.ow2.asm:asm-tree:7.2'
+}
+
+
+
+//group和version在后面使用自定义插件的时候会用到
+group='com.example.amsplugin'
+version='0.0.1'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //提交到远程服务器：
+            // repository(url: "http://www.xxx.com/repos") {
+            //    authentication(userName: "admin", password: "admin")
+            // }
+            //本地的Maven地址:当前工程下
+            repository(url: uri('./my-plugin'))
+        }
+    }
+}
